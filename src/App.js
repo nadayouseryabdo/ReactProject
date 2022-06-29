@@ -1,27 +1,27 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Counter from './components/counter';
-import Inecrement from './components/increment';
-import Decrement from './components/decrement';
-import { useState } from 'react';
+import Count from './pages/counter/Counter';
+import Nav from './components/navbar/navbar';
+import {BrowserRouter , Route , Routes} from 'react-router-dom'
+import Home from './pages/home/Home';
+import About from './pages/about/About';
+import Products from './pages/products/Products';
+import Product from './pages/products/Product';
+
 
 function App() {
-  const [counter , setCounter]= useState(0)
-  console.log(counter)
-  const increaseingFn =()=>{
-    setCounter(counter+1)
-  }
-  const dcreaseingFn =()=>{
-    if(counter>0){
-      setCounter(counter-1)
-    }
-  }
+
   return (
-    <div className='mx-auto w-50 mt-5'>
-      <h1 className=''>Counter :</h1>
-      <Counter counter={counter} />
-      <Inecrement IncreCount={increaseingFn} />
-      <Decrement DcreCount={dcreaseingFn} />
-    </div>
+   <BrowserRouter>
+       <Nav />
+       <Routes>
+       <Route path="/" element={<Home />} />
+       <Route path="/about" element={<About />} />
+       <Route path="/products" element={<Products />} />
+       <Route path="/product/:id" element={<Product />} />
+       <Route path="/count" element={<Count />} />
+       </Routes>
+  
+   </BrowserRouter>
   );
 }
 export default App;
