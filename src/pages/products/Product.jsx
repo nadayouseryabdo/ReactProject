@@ -15,7 +15,7 @@ function Product() {
 
     return (
         <>
-            <div className="card border-3 w-75 mx-auto mt-5 p-4">
+            {singleProduct.id ? <div className="card border-3 w-75 mx-auto mt-5 p-4">
                 <div className="row" key={singleProduct.id}>
                     <div className="col-4">
                         <img src={singleProduct.image} className='img-fluid rounded-start w-75' alt="" />
@@ -29,9 +29,13 @@ function Product() {
                             <button className="btn btn-success">Add to Cart</button>
                         </div>
                     </div>
-
                 </div>
             </div>
+                :
+                <div className="spinner-border text-success mx-auto mt-5 d-block " role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            }
         </>
     );
 }

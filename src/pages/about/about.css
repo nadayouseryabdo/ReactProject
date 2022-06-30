@@ -1,18 +1,15 @@
-.homeComponent{
+.about_container{
     display: flex;
+    justify-content:space-between;
     width: 80%;
-    height: 70vh;
     background-color:blanchedalmond;
     margin: 50px auto;
     padding:30px;
     box-shadow:7px 7px 20px rgb(23, 85, 18);
 }
-
-.homeComponent p{
-    font-weight:100;
+.about_container h1{
+    color: rgba(22, 85, 18, 0.788);
 }
-.homeComponent img{
-    border-radius:50%;
-    height: 50vh;
-    margin-top: 35px;
+.about_container img{
+    width: 40%;
 }

@@ -6,6 +6,8 @@ import Home from './pages/home/Home';
 import About from './pages/about/About';
 import Products from './pages/products/Products';
 import Product from './pages/products/Product';
+import NotFound from './pages/notfound/NotFound';
+import Todo from './pages/todo/Todo'
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
        <Route path="/products" element={<Products />} />
        <Route path="/product/:id" element={<Product />} />
        <Route path="/count" element={<Count />} />
+       <Route path='/todo' element={<Todo />} />
+       <Route path="*" element={<NotFound />} />
        </Routes>
   
    </BrowserRouter>
