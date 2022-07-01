@@ -1,38 +1,18 @@
-import { createStore } from "redux";
-
-
-//action
-const ADD_TODO ='ADD_TODO'
-const DELETE_TODO ='DELETE_TODO'
-
-export const addNewTodo=(payload)=>{
-    return{
-        type:ADD_TODO,
-        payload
-    }
-}
-export const DeleteOneTodo=(payload)=>{
-    return{
-        type:DELETE_TODO,
-        payload
-    }}
-
-//initialstate
-const initialState = {todos:[]}
-
-//reducer
-const todoReducer = (state=initialState, action)=>{
-    switch(action.type){
-        case ADD_TODO:
-            return {...state,todos:[...state.todos,action.payload]}
-        case DELETE_TODO:
-            return {...state,todos:[...state.todos.filter((item,index)=>index !==action.payload)]}
-        default:
-            return state
-    }
-}
+// import { createStore } from "redux";
+// import { todoReducer } from './oldredux'
 
 //store
-export const store = createStore(
-    todoReducer
-)
+// export const store = createStore(
+//     todoReducer
+// )
+
+import { configureStore } from '@reduxjs/toolkit'
+import  todoSlice  from './features/todoSlice'
+import  productSlice  from './features/productSlice'
+
+export const store = configureStore({
+  reducer:{
+    todoSlice,
+    productSlice
+  } 
+})

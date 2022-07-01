@@ -1,10 +1,12 @@
-import Counter from '../../components/counter';
-import Inecrement from '../../components/increment';
-import Decrement from '../../components/decrement';
+import Counter from '../../components/counter/counter';
+import Inecrement from '../../components/counter/increment';
+import Decrement from '../../components/counter/decrement';
 import { useState } from 'react';
+import image from '../../assets/images/Thanks.jpg'
 
 function Count() {
   const [counter , setCounter]= useState(0)
+  const [submit , setSubmit]= useState(false)
   const increaseingFn =()=>{
     setCounter(counter+1)
   }
@@ -14,12 +16,19 @@ function Count() {
     }
   }
   return (
-    <div className='mx-auto w-50 mt-5'>
-      <h1 className=''>Counter :</h1>
-      <Counter counter={counter} />
-      <Inecrement IncreCount={increaseingFn} />
-      <Decrement DcreCount={dcreaseingFn} />
-    </div>
+   <>{
+    !submit? 
+    <div className='mx-auto w-50 mt-5 text-center'>
+    <h1 >Support Us:</h1>
+    <Counter className='my-5' counter={counter}/>
+    <p>dollars $</p>
+    <Inecrement IncreCount={increaseingFn} />
+    <Decrement DcreCount={dcreaseingFn} />
+    <button className='btn btn-success d-block mt-5 mx-auto' onClick={()=>setSubmit(true)}>Submit</button>
+  </div>:
+  <img src={image} className='d-block mx-auto mt-5' alt="" />
+   }
+   </>
   );
 }
 export default Count;

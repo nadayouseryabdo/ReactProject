@@ -1,21 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchProducts } from '../../redux/features/productSlice'
 
 
 function Products() {
-    const [productArray, setproductArray] = useState([])
+    const {productArray ,loading} = useSelector(state => state.productSlice)
+    const dispatch = useDispatch()
+    useEffect(() => { 
+        dispatch(fetchProducts())
+    }, [])
 
-    useEffect(() => { fetchProducts() }, [])
-
-    const fetchProducts = () => {
-        fetch('https://fakestoreapi.com/products')
-            .then(res => res.json())
-            .then(json => setproductArray(json))
-    }
+    // const [productArray, setproductArray] = useState([])
+    // const fetchProducts = () => {
+    //     fetch('https://fakestoreapi.com/products')
+    //         .then(res => res.json())
+    //         .then(json => setproductArray(json))
+    // }
 
     return (
         <>
-            {productArray.length > 0 ? <div className="row mx-auto justify-content-center">
+            {!loading ? <div className="row mx-auto justify-content-center">
                 {productArray.map((item, i) => {
                     return (
                         <div key={item.id} className='shadow-lg border-1 border-success card col-3 m-2 text-decoration-none text-muted'>

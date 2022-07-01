@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux'
-import { addNewTodo } from '../../redux/index'
+// import { addNewTodo } from '../../redux/oldredux'
+import { addNewTodo } from "../../redux/features/todoSlice";
 
 const TodoForm = () => {
   const dispatch = useDispatch()
