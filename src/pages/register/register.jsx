@@ -6,8 +6,7 @@ import Select from 'react-select'
 
 function Register() {
   const { register, handleSubmit, formState: { errors }, watch ,control } = useForm()
-  const passwordCurrent = watch("password", "");
-  const cpasswordCurrent = watch("c_password", "");
+
 
   const onSubmit = data => console.log(data)
   
@@ -28,11 +27,11 @@ function Register() {
   ]
 
   return (
-   <div className='m-5 '>
+   <div className='mx-auto w-50 my-5 border border-success p-5 shadow-lg'>
      <form onSubmit={handleSubmit(onSubmit)}>
       <div >
         <label htmlFor="">Email</label><br />
-        <input type="email" className='w-50 py-1'
+        <input type="email" className='w-100 py-1'
           placeholder="enter your email" {...register('email', {
           required: true,
           pattern:/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -46,7 +45,7 @@ function Register() {
           && <p className='fw-normal text-danger fs-6'>email invalid</p>
         }
       </div>
-      <div className='w-50 my-3'>
+      <div className='w-100 my-3'>
       <label htmlFor="">Gender</label>
       <Controller
         name="gselect"
@@ -59,7 +58,7 @@ function Register() {
         />}
       />
       </div>
-      <div className='w-50 my-3'>
+      <div className='w-100 my-3'>
       <label htmlFor="">Hoppies</label>
         <Controller
         name="hselect"
@@ -77,7 +76,7 @@ function Register() {
 
       <div>
       <label htmlFor="">Password</label><br />
-        <input className='w-50 py-1' type="password" placeholder="enter your Password" {...register('password', { required: true, minLength: 8, maxLength: 12 })} /><br />
+        <input className='w-100 py-1' type="password" placeholder="enter your Password" {...register('password', { required: true, minLength: 8, maxLength: 12 })} /><br />
         {
           (errors.password && errors.password.type) === 'required'
           && <p className='fw-normal text-danger fs-6'>password reuired</p>
@@ -94,17 +93,26 @@ function Register() {
       </div>
       <div className='my-4'>
       <label htmlFor="">confirm password</label><br />
-        <input className='w-50 py-1' type="password" placeholder="enter your Password again" {...register('c_password', { required: true })} /><br />
+        <input className='w-100 py-1' type="password"
+         placeholder="enter your Password again" 
+         {...register('c_password', { required: true,
+           validate: (value) => {
+          if (watch('password') !== value) {
+            console.log(value)
+            return "password don't match";
+          }} 
+        })} /><br />
         {
           (errors.c_password && errors.c_password.type) === 'required'
           && <p className='fw-normal text-danger fs-6'>confirm password reuired</p>
         }
-        {
-          (cpasswordCurrent && cpasswordCurrent !== passwordCurrent)
-          && <p className='fw-normal text-danger fs-6'>confirm password doesnt match</p>
+         {
+          (errors.c_password && errors.c_password.type) === 'validate'
+          && <p className='fw-normal text-danger fs-6'>{errors.c_password.message}</p>
         }
+       
       </div>
-      <button type='submit' className='btn btn-success'>Submit</button>
+      <button type='submit' className='btn btn-success d-block mx-auto'>Submit</button>
     </form>
    </div>
   );
