@@ -22,7 +22,6 @@ const TodoForm = () => {
   return (
     <div>
       <h3 className="text-muted mb-4">Add a TODO</h3>
-
       <form onSubmit={handleSubmission}>
         <label htmlFor="">Title</label>
         <input
@@ -38,7 +37,7 @@ const TodoForm = () => {
           name="content"
           value={content}
           className='mt-2'
-          style={{ 'vertical-align': 'middle' }}
+        
           onChange={(e) => setContent(e.target.value)}
         ></textarea>
         <br />

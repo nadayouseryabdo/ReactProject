@@ -8,6 +8,7 @@ import Products from './pages/products/Products';
 import Product from './pages/products/Product';
 import NotFound from './pages/notfound/NotFound';
 import Todo from './pages/todo/Todo'
+import Register from './pages/register/register';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
        <Route path="/product/:id" element={<Product />} />
        <Route path="/count" element={<Count />} />
        <Route path='/todo' element={<Todo />} />
+       <Route path='/register' element={<Register />} />
        <Route path="*" element={<NotFound />} />
        </Routes>
   

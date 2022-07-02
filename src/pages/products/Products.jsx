@@ -5,11 +5,12 @@ import { fetchProducts } from '../../redux/features/productSlice'
 
 
 function Products() {
-    const {productArray ,loading} = useSelector(state => state.productSlice)
+    const {productArray ,loading} = useSelector(state => state.pReducer)
     const dispatch = useDispatch()
     useEffect(() => { 
         dispatch(fetchProducts())
     }, [])
+    // const loading = useSelector(state=> state.loading)
 
     // const [productArray, setproductArray] = useState([])
     // const fetchProducts = () => {

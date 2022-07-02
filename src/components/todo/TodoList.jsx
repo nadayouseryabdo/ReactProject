@@ -4,10 +4,10 @@ import { DeleteOneTodo } from '../../redux/features/todoSlice';
 
 
 const TodoList = () => {
-  const todos = useSelector(state => state.todos)
+  const todos = useSelector(state => state.tReducer.todos)
+  console.log(todos)
   const dispatch = useDispatch()
 
-  
   const deleteTodo = (index) => {
     dispatch(DeleteOneTodo(index))
   }

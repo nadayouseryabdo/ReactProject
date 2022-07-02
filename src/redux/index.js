@@ -12,7 +12,7 @@ import  productSlice  from './features/productSlice'
 
 export const store = configureStore({
   reducer:{
-    todoSlice,
-    productSlice
+    tReducer:todoSlice,
+    pReducer:productSlice
   } 
 })
